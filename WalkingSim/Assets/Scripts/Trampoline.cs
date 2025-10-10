@@ -26,7 +26,7 @@ public class Trampoline : MonoBehaviour
     private void OnTriggerEnter(Collider coll)
     {
         Rigidbody collRigid = coll.gameObject.GetComponent<Rigidbody>();
-        Vector3 normalVel = collRigid.velocity.normalized;
+        Vector3 normalVel = collRigid.linearVelocity.normalized;
         newVelocity = new Vector3(normalVel.x * .1f, .2f+ Mathf.Abs(normalVel.y)*1.3f, normalVel.z * .1f);
         if (collRigid != null)
         {
