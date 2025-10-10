@@ -215,7 +215,7 @@ public class GrabbableObject : MonoBehaviour {
             float hitVol = Random.Range(.7f,1);
             if (!muteCollSound)
             {
-                if (rigid.velocity.magnitude < velocityClipSplit)
+                if (rigid.linearVelocity.magnitude < velocityClipSplit)
                     source.PlayOneShot(clips[2], hitVol);//Soft Collision
                 else
                     source.PlayOneShot(clips[3], hitVol);//Hard Collision
