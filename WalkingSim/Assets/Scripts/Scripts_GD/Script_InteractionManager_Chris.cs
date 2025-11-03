@@ -4,7 +4,7 @@ using UnityEngine;
 public class InteractionManager : MonoBehaviour
 {
     [Header("Objets à activer avant la porte")]
-    public List<CubeInteractable> requiredObjects = new List<CubeInteractable>();
+    public List<SimpleInteractable> requiredObjects = new List<SimpleInteractable>();
 
     [Header("Porte à débloquer")]
     public GameObject door;
@@ -27,7 +27,7 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
-    void OnObjectInteracted(CubeInteractable obj)
+    void OnObjectInteracted(SimpleInteractable obj)
     {
         if (unlocked) return;
 

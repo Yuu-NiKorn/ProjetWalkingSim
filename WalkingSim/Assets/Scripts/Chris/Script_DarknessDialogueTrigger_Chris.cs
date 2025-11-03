@@ -9,21 +9,21 @@ public class DarknessDialogueTrigger : MonoBehaviour
     public DialogueUI dialogueUI;
 
     [Header("Voile noir plein écran")]
-    // CanvasGroup d'une Image noire plein écran (voir étapes setup)
     public CanvasGroup blackout;
-    [Range(0f, 1f)] public float targetDarkness = 0.95f; // 0.95 ≈ on ne voit presque rien
-    public float fadeSpeed = 3f; // vitesse du fondu (1–5)
+    [Range(0f, 1f)] public float targetDarkness = 0.95f; // quasi noir
+    public float fadeSpeed = 3f;
 
-    [Header("Options")]
+    [Header("Comportement")]
+    public int keepDarkForFirstLines = 3; // ← rester sombre pendant ces N premières répliques
     public bool triggerOnce = true;
-    public bool restoreOnDialogueEnd = true; // remet la vision en fin de dialogue
+    public bool restoreAtEnd = true;      // remettre la vision à la fin du dialogue (au cas où)
 
-    bool hasTriggered = false;
+    private bool hasTriggered = false;
 
     void Start()
     {
         GetComponent<Collider>().isTrigger = true;
-        if (blackout != null) blackout.alpha = Mathf.Clamp01(blackout.alpha); // sécurité
+        if (blackout != null) blackout.alpha = 0f;
     }
 
     void OnTriggerEnter(Collider other)
@@ -32,34 +32,42 @@ public class DarknessDialogueTrigger : MonoBehaviour
         if (triggerOnce && hasTriggered) return;
         hasTriggered = true;
 
-        // Assombrir fortement l'écran
+        // 1) On plonge dans le noir
         if (blackout != null)
             StartCoroutine(FadeCanvas(blackout, blackout.alpha, targetDarkness, fadeSpeed));
 
-        // Lancer le dialogue
+        // 2) On écoute le moment où on atteint la ligne keepDarkForFirstLines
+        if (dialogueUI != null)
+        {
+            dialogueUI.onLineStarted -= OnLineStarted; // éviter les doublons
+            dialogueUI.onLineStarted += OnLineStarted;
+        }
+
+        // 3) On lance le dialogue
+        StartCoroutine(RunDialogue());
+    }
+
+    void OnLineStarted(int index, DialogueData.DialogueLine line)
+    {
+
+        if (blackout != null && index >= keepDarkForFirstLines)
+        {
+
+            dialogueUI.onLineStarted -= OnLineStarted;
+            StartCoroutine(FadeCanvas(blackout, blackout.alpha, 0f, fadeSpeed));
+        }
+    }
+
+    IEnumerator RunDialogue()
+    {
         if (dialogueUI != null && dialogue != null)
-            StartCoroutine(RunDialogueThenMaybeRestore());
-    }
+            yield return dialogueUI.PlayDialogue(dialogue);
 
-    IEnumerator RunDialogueThenMaybeRestore()
-    {
-        yield return dialogueUI.PlayDialogue(dialogue);
-
-        if (restoreOnDialogueEnd && blackout != null)
+        // Si le dialogue s’est fini avant d’avoir éclairci 
+        if (restoreAtEnd && blackout != null && blackout.alpha > 0f)
             StartCoroutine(FadeCanvas(blackout, blackout.alpha, 0f, fadeSpeed));
 
-        if (triggerOnce)
-            Destroy(gameObject);
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        // Si tu veux que sortir de la zone rende la vue, décommente :
-        /*
-        if (!other.CompareTag("Player")) return;
-        if (blackout != null)
-            StartCoroutine(FadeCanvas(blackout, blackout.alpha, 0f, fadeSpeed));
-        */
+        if (triggerOnce) Destroy(gameObject);
     }
 
     IEnumerator FadeCanvas(CanvasGroup cg, float from, float to, float speed)

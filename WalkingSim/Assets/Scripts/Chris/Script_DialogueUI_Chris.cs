@@ -1,31 +1,49 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System;
 
 public class DialogueUI : MonoBehaviour
 {
     public TextMeshProUGUI textUI;
     public AudioSource audioSource;
     public CanvasGroup canvasGroup;
+    
+    public Action<int, DialogueData.DialogueLine> onLineStarted;
+    public int CurrentLineIndex { get; private set; } = -1;
+    public bool IsPlaying { get; private set; } = false;
 
     public IEnumerator PlayDialogue(DialogueData dialogue)
     {
+        IsPlaying = true;
+        CurrentLineIndex = -1;
         canvasGroup.alpha = 1;
 
-        foreach (var line in dialogue.lines)
+        for (int i = 0; i < dialogue.lines.Length; i++)
         {
-            textUI.text = line.text;
+            CurrentLineIndex = i;
+            var line = dialogue.lines[i];
+            
+            onLineStarted?.Invoke(i, line);
 
-            if (line.audio != null)
+            if (textUI != null) textUI.text = line.text ?? "";
+
+            if (audioSource != null)
             {
+                audioSource.Stop();
                 audioSource.clip = line.audio;
-                audioSource.Play();
+                if (audioSource.clip != null) audioSource.Play();
             }
 
-            yield return new WaitForSeconds(line.duration);
+            float wait = Mathf.Max(0.01f, line.duration);
+            yield return new WaitForSeconds(wait);
         }
 
-        textUI.text = "";
-        canvasGroup.alpha = 0;
+        // Fin
+        if (textUI != null) textUI.text = "";
+        if (canvasGroup != null) canvasGroup.alpha = 0;
+
+        IsPlaying = false;
+        CurrentLineIndex = -1;
     }
 }
