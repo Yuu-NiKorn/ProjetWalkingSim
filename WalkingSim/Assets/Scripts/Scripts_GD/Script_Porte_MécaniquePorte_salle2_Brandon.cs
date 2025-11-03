@@ -39,6 +39,7 @@ public class Door : MonoBehaviour
     public AudioClip[] clips;
     public AudioSource Source;
 
+    private Quaternion startRotation;   // Rotation actuelle au lancement
     private Quaternion targetRotation;  // Rotation visée
 
     // ==========================
@@ -46,6 +47,18 @@ public class Door : MonoBehaviour
     // ==========================
     void Start()
     {
+        // Récupère la rotation initiale depuis la scène
+        startRotation = transform.localRotation;
+        targetRotation = startRotation;
+
+        // Sécurise la physique
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+
         // Récupération de la caméra principale
         MainCam = GameObject.FindWithTag("MainCamera");
         if (MainCam == null)
