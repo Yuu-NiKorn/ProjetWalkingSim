@@ -1,29 +1,21 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-/* 
-
-    First Person Interaction Toolkit by Steven Harmon stevenharmongames.com
-    Licensed under the MPL 2.0. https://www.mozilla.org/en-US/MPL/2.0/FAQ/
-    Please use in your walking sims/horror/adventure/puzzle games! Drop me a line and share what make with it! :)    
-
- */
-public class Door : MonoBehaviour
+public class Screipt_Porte_MécaniquePorte_salle2_Brandon : MonoBehaviour
 {
     [Header("Minecraft-like Door")]
-    [Tooltip("Rotation de la porte fermée")]
+    [Tooltip("Rotation de la porte fermée (relative à la position d'origine)")]
     public Vector3 closedRot = new Vector3(0, 0, 0);
-    [Tooltip("Rotation de la porte ouverte")]
+    [Tooltip("Rotation de la porte ouverte (en degrés à partir de la rotation actuelle)")]
     public Vector3 openRot = new Vector3(0, 90, 0);
-    [Tooltip("Vitesse d'ouverture / fermeture (plus haute = plus instantané)")]
+    [Tooltip("Vitesse d'ouverture / fermeture (plus haut = plus instantané)")]
     public float openSpeed = 8f;
 
-    private bool isOpen = false;      // État de la porte
-    private bool over = false;        // Le joueur regarde la porte
+    private bool isOpen = false;
+    private bool over = false;
 
     [Tooltip("Door Renderer")]
-    public Renderer doorRend;         // Pour changer la couleur de la porte
+    public Renderer doorRend;
     private Color originColor;
     [Tooltip("Color when hovered over (looked at)")]
     public Color targetColor = Color.yellow;
@@ -42,9 +34,6 @@ public class Door : MonoBehaviour
     private Quaternion startRotation;   // Rotation actuelle au lancement
     private Quaternion targetRotation;  // Rotation visée
 
-    // ==========================
-    // ==== Initialisation ======
-    // ==========================
     void Start()
     {
         // Récupère la rotation initiale depuis la scène
@@ -62,99 +51,57 @@ public class Door : MonoBehaviour
         // Récupération de la caméra principale
         MainCam = GameObject.FindWithTag("MainCamera");
         if (MainCam == null)
-        {
             MainCam = GameObject.FindObjectOfType<Camera>().gameObject;
-        }
 
-        // Récupère le script d'interaction
         InteractionScript = MainCam.GetComponent<Interact>();
-
-        // Couleur d'origine du matériau
         originColor = doorRend.material.color;
-
-        // Porte fermée par défaut
-        targetRotation = Quaternion.Euler(closedRot);
-        transform.localRotation = targetRotation;
     }
 
-    // ==========================
-    // ==== Boucle d'update =====
-    // ==========================
     void Update()
     {
-        // Transition douce de la rotation actuelle vers la rotation cible
         transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * openSpeed);
 
-        // Gestion du surlignage couleur
+        // Gestion du surlignage
         if (over)
-        {
             doorRend.material.color = Color.Lerp(doorRend.material.color, targetColor, Time.deltaTime * 4);
-        }
         else
-        {
             doorRend.material.color = Color.Lerp(doorRend.material.color, originColor, Time.deltaTime * 2);
-        }
     }
 
-    // ==========================
-    // ==== Quand le joueur regarde la porte ====
-    // ==========================
     public void Hovering(Vector3 rayHitPoint)
     {
         over = true;
         StartCoroutine(Fadeout());
-
-        // Change le message selon l'état
-        if (!isOpen)
-        {
-            InteractionScript.message = prompts[0]; // "Open Door"
-        }
-        else
-        {
-            InteractionScript.message = prompts[1]; // "Close Door"
-        }
+        InteractionScript.message = isOpen ? prompts[1] : prompts[0];
     }
 
-    // ==========================
-    // ==== Quand le joueur interagit ====
-    // ==========================
     public void Interacting()
     {
-        // Inverse l'état de la porte
         isOpen = !isOpen;
 
-        // Change la rotation cible
         if (isOpen)
         {
-            targetRotation = Quaternion.Euler(openRot);
-
-            // Joue le son d'ouverture
-            if (Source && clips.Length > 0 && clips[0])
-            {
-                Source.Stop();
-                Source.pitch = Random.Range(0.9f, 1.1f);
-                Source.clip = clips[0];
-                Source.Play();
-            }
+            targetRotation = startRotation * Quaternion.Euler(openRot);
+            PlaySound(0);
         }
         else
         {
-            targetRotation = Quaternion.Euler(closedRot);
-
-            // Joue le son de fermeture
-            if (Source && clips.Length > 1 && clips[1])
-            {
-                Source.Stop();
-                Source.pitch = Random.Range(0.9f, 1.1f);
-                Source.clip = clips[1];
-                Source.Play();
-            }
+            targetRotation = startRotation * Quaternion.Euler(closedRot);
+            PlaySound(1);
         }
     }
 
-    // ==========================
-    // ==== Fait disparaître le surlignage ====
-    // ==========================
+    private void PlaySound(int index)
+    {
+        if (Source && clips.Length > index && clips[index])
+        {
+            Source.Stop();
+            Source.pitch = Random.Range(0.9f, 1.1f);
+            Source.clip = clips[index];
+            Source.Play();
+        }
+    }
+
     private IEnumerator Fadeout()
     {
         yield return new WaitForSeconds(1);
