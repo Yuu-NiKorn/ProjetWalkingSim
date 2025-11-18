@@ -12,4 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ace8cb2c0b5f5f4eae8d3c88b669c6a, type: 3}
   m_Name: Brandon
   m_EditorClassIdentifier: 
-  lines: []
+  lines:
+  - text: "Brandon: Chris je suis content que tu sois l\xE0"
+    audio: {fileID: 0}
+    duration: 3
+  - text: 'Chris: Pas moi'
+    audio: {fileID: 0}
+    duration: 3
+  - text: 'Mio: UWU'
+    audio: {fileID: 0}
+    duration: 3
+  - text: 'Chris: Euh.... ok....'
+    audio: {fileID: 0}
+    duration: 3
+  - text: 'Viego: je t''aime yuu'
+    audio: {fileID: 0}
+    duration: 3
