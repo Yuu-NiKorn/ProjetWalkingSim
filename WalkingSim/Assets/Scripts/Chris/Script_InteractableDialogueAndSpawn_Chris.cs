@@ -18,12 +18,26 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
     public bool fadeInOnReveal = true;
     public float fadeInDuration = 0.6f;
 
-    [Header("DISPARITION")]
-    public bool hideObject = false;
-    public GameObject objectToHide;        
-    public bool fadeOutOnHide = true;
-    public float fadeOutDuration = 0.6f;
+    [System.Serializable]
+    public class HideTarget
+    {
+        [Tooltip("L'objet à faire disparaître")]
+        public GameObject objectToHide;
+
+        [Tooltip("Si coché, l'objet disparaît dès l'interaction, sinon après le dialogue")]
+        public bool hideOnInteract = false;
+
+        [Header("Fondu")]
+        [Tooltip("Utiliser un fondu pour cet objet ?")]
+        public bool useFade = true;
+
+        [Tooltip("Durée du fondu pour CET objet")]
+        public float fadeDuration = 0.6f;
+    }
+
+    [Header("DISPARITION (plusieurs objets)")]
     public bool disableAfterFadeOut = true;
+    public List<HideTarget> hideTargets = new List<HideTarget>();
 
     [Header("Sons")]
     public AudioSource sfxSource;
@@ -36,6 +50,20 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
     {
         if (triggerOnce && hasTriggered) return;
         hasTriggered = true;
+
+        // 1) Cacher tout de suite ceux qui doivent disparaître à l'interaction
+        if (hideTargets != null)
+        {
+            foreach (var ht in hideTargets)
+            {
+                if (ht == null || ht.objectToHide == null) continue;
+                if (!ht.hideOnInteract) continue;
+
+                StartCoroutine(HideOneTarget(ht));
+            }
+        }
+
+        // 2) Lancer la séquence dialogue + apparition + disparitions "après dialogue"
         StartCoroutine(RunSequence());
     }
 
@@ -63,22 +91,79 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
 
             if (revealed != null)
             {
-                if (fadeInOnReveal) yield return StartCoroutine(FadeObject(revealed, 0f, 1f, fadeInDuration, setTransparentBefore:true, restoreOpaqueAfter:true));
-                if (sfxSource && appearSfx) sfxSource.PlayOneShot(appearSfx);
+                if (fadeInOnReveal)
+                    yield return StartCoroutine(FadeObject(
+                        revealed,
+                        fromAlpha: 0f,
+                        toAlpha: 1f,
+                        duration: fadeInDuration,
+                        setTransparentBefore: true,
+                        restoreOpaqueAfter: true
+                    ));
+
+                if (sfxSource && appearSfx)
+                    sfxSource.PlayOneShot(appearSfx);
             }
         }
 
-        //  Disparition
-        if (hideObject && objectToHide != null)
+        //  Disparition APRÈS dialogue (ceux qui ne sont PAS hideOnInteract)
+        if (hideTargets != null)
         {
-            if (fadeOutOnHide)
-                yield return StartCoroutine(FadeObject(objectToHide, 1f, 0f, fadeOutDuration, setTransparentBefore:true, restoreOpaqueAfter:false));
+            foreach (var ht in hideTargets)
+            {
+                if (ht == null || ht.objectToHide == null) continue;
+                if (ht.hideOnInteract) continue; // déjà traités à l'interaction
 
-            if (sfxSource && disappearSfx) sfxSource.PlayOneShot(disappearSfx);
-
-            if (disableAfterFadeOut)
-                objectToHide.SetActive(false);
+                yield return StartCoroutine(HideOneTarget(ht));
+            }
         }
+    }
+
+    // --------- GÈRE UN SEUL OBJET À CACHER ----------
+    IEnumerator HideOneTarget(HideTarget ht)
+    {
+        if (ht == null || ht.objectToHide == null) yield break;
+
+        GameObject go = ht.objectToHide;
+
+        // Fondu si demandé
+        if (ht.useFade)
+        {
+            yield return StartCoroutine(FadeObject(
+                go,
+                fromAlpha: 1f,
+                toAlpha: 0f,
+                duration: ht.fadeDuration,
+                setTransparentBefore: true,
+                restoreOpaqueAfter: false
+            ));
+        }
+
+        // Après le fade (ou direct), on désactive ce qu'il faut
+        if (disableAfterFadeOut)
+        {
+            // ⚠️ CAS SPÉCIAL : si c'est l'objet qui porte CE script,
+            // on ne désactive pas le GameObject complet sinon toutes les coroutines s'arrêtent.
+            if (go == this.gameObject)
+            {
+                // On coupe juste les rendus + colliders + interaction
+                foreach (var r in go.GetComponentsInChildren<Renderer>(true))
+                    r.enabled = false;
+
+                foreach (var c in go.GetComponentsInChildren<Collider>(true))
+                    c.enabled = false;
+
+                gameObject.tag = "Untagged"; // plus interactable
+            }
+            else
+            {
+                // Autres objets : on peut tout désactiver sans risque
+                go.SetActive(false);
+            }
+        }
+
+        if (sfxSource && disappearSfx)
+            sfxSource.PlayOneShot(disappearSfx);
     }
 
     // --------- FONDU UTILITAIRE (Standard + URP) ----------
@@ -86,22 +171,17 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
     {
         if (go == null) yield break;
 
-
         var renderers = go.GetComponentsInChildren<Renderer>(true);
         if (renderers.Length == 0) yield break;
-
 
         List<Material> mats = new List<Material>();
         foreach (var r in renderers)
         {
-
             mats.AddRange(r.materials);
         }
 
-
         if (setTransparentBefore)
             foreach (var m in mats) SetMaterialTransparent(m);
-
 
         foreach (var m in mats) SetMaterialAlpha(m, fromAlpha);
 
@@ -115,11 +195,9 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
         }
         foreach (var m in mats) SetMaterialAlpha(m, toAlpha);
 
-
         if (restoreOpaqueAfter && toAlpha >= 0.999f)
             foreach (var m in mats) SetMaterialOpaque(m);
     }
-
 
     void SetMaterialTransparent(Material m)
     {
@@ -163,4 +241,3 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
         }
     }
 }
-
