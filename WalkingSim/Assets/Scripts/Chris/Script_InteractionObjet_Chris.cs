@@ -7,6 +7,8 @@ public class SimpleInteractable : MonoBehaviour
     [TextArea] public string hoverPrompt = "Press E";
     public UnityEvent onInteractUnity;
     public event Action<SimpleInteractable> onInteracted;
+    [SerializeField] public bool exit = false;
+    
 
     private Interact inter;
     private bool _used = false;
@@ -21,6 +23,9 @@ public class SimpleInteractable : MonoBehaviour
 
     void Interacting()
     {
+        if (exit == true)
+                 Application.Quit();
+        
         if (_used) return; 
         _used = true;
 
@@ -31,6 +36,7 @@ public class SimpleInteractable : MonoBehaviour
         gameObject.tag = "Untagged";
 
         if (inter != null) inter.message = "";
+        
     }
 
     void UnHover()
