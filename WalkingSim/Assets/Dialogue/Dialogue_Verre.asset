@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Dialogue_Verre
   m_EditorClassIdentifier: 
   lines:
-  - text: zfzgzg
+  - text: Test
     audio: {fileID: 0}
     duration: 3
-  - text: rhrgrbg
+  - text: test test
     audio: {fileID: 0}
     duration: 3

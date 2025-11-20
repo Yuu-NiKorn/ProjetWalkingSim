@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Dialogue_Sac
   m_EditorClassIdentifier: 
   lines:
-  - text: zfzgzg
+  - text: Test test
     audio: {fileID: 0}
     duration: 3
-  - text: rhrgrbg
+  - text: Test dialogue
     audio: {fileID: 0}
     duration: 3
