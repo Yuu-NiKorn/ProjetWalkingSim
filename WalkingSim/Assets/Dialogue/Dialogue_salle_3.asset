@@ -22,6 +22,12 @@ MonoBehaviour:
   - text: "Comment je suis sens\xE9 avancer si je ne voie rien"
     audio: {fileID: 0}
     duration: 3
+  - text: "Je peux arranger \xE7a si tu veux "
+    audio: {fileID: 0}
+    duration: 3
+  - text: je t'en prie
+    audio: {fileID: 0}
+    duration: 3
   - text: "Que la lumi\xE8re fut"
     audio: {fileID: 0}
     duration: 3
