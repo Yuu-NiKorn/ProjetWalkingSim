@@ -26,7 +26,7 @@ public class Teleporter : MonoBehaviour
             //disable character controller, otherwise it would be overridenssss
             coll.GetComponent<CharacterController>().enabled = false;
             //teleport while correcting height (so you don't teleport inside or under the floor)
-            coll.transform.position = new Vector3(teleportDestination.position.x, teleportDestination.position.y + coll.bounds.max.y, teleportDestination.position.z);
+            coll.transform.position = new Vector3(teleportDestination.position.x, teleportDestination.position.y, teleportDestination.position.z);
             coll.GetComponent<CharacterController>().enabled = true;
         }
         
