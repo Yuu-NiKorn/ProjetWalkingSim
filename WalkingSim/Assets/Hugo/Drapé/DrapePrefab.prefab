@@ -54,10 +54,40 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 80f1ae5ea6aa5ba4cbdb6ab4ed8d46bc, type: 2}
     - target: {fileID: 919132149155446097, guid: 97bcd7956ab99844080ce334ddc6d899, type: 3}
       propertyPath: m_Name
-      value: BloodshedCloth
+      value: DrapePrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 97bcd7956ab99844080ce334ddc6d899, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2711596734962300643}
   m_SourcePrefab: {fileID: 100100000, guid: 97bcd7956ab99844080ce334ddc6d899, type: 3}
+--- !u!1 &1025321441388282802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 97bcd7956ab99844080ce334ddc6d899, type: 3}
+  m_PrefabInstance: {fileID: 214982813148479203}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2711596734962300643
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025321441388282802}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7716496373880769467, guid: 97bcd7956ab99844080ce334ddc6d899, type: 3}
