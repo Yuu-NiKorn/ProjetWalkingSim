@@ -10,15 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ace8cb2c0b5f5f4eae8d3c88b669c6a, type: 3}
-  m_Name: DilalogueTestSpawn
+  m_Name: 3DDemo
   m_EditorClassIdentifier: 
   lines:
-  - text: 'Ange: Bienvenue dans mon monde'
-    audio: {fileID: 0}
-    duration: 3
-  - text: "Ange: Ici tu peux tester toutes les m\xE9caniques de mon jeu"
-    audio: {fileID: 0}
-    duration: 3
-  - text: "Ange: Pour comencer r\xE9cup\xE8re les trois objets pour ouvrir la porte"
+  - text: "Ange: Bienvenue dans mon mus\xE9e d'assets 3D"
     audio: {fileID: 0}
     duration: 3
