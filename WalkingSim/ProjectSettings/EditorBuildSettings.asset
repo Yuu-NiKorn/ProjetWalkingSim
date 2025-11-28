@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartPlay.unity
     guid: f3acf70884c917c47856d50616e97bda
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/RenduAuPropreSalles.unity
     guid: 17022f57ddddef0408fd1f7ddaf44249
+  - enabled: 1
+    path: Assets/Scenes/SceneDemoScript.unity
+    guid: 0abd8553063aaf84086a63b62ce62465
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
