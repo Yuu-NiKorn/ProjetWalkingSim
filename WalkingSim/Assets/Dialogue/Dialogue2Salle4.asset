@@ -10,15 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ace8cb2c0b5f5f4eae8d3c88b669c6a, type: 3}
-  m_Name: DialogueSalle4
+  m_Name: Dialogue2Salle4
   m_EditorClassIdentifier: 
   lines:
-  - text: Mais, je suis donc mort ?
-    audio: {fileID: 0}
-    duration: 3
-  - text: "Je lui ai caus\xE9 tant de tort ?"
-    audio: {fileID: 0}
-    duration: 3
-  - text: "Je m\xE9rite probablement ce qui m'arrive."
+  - text: "C'est moi qui ai... mais il m'as tu\xE9 !"
     audio: {fileID: 0}
     duration: 3
