@@ -10,12 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ace8cb2c0b5f5f4eae8d3c88b669c6a, type: 3}
-  m_Name: SuceMonPaf
+  m_Name: Dialogue_Caillou
   m_EditorClassIdentifier: 
   lines:
-  - text: Ou suis je maintenant ?
+  - text: "Bon, en vrai, il m\xE9ritait pas, il est p'tetre d\xE9bile\r\nouais, mais
+      bon."
     audio: {fileID: 0}
-    duration: 2
-  - text: 'Ange : C''est ici que tu trouvera ton salut.'
+    duration: 3
+  - text: ' Et maintenant ? Je fais quoi ?'
     audio: {fileID: 0}
-    duration: 2
+    duration: 3
+  - text: ' Ange : Continue ...'
+    audio: {fileID: 0}
+    duration: 3
