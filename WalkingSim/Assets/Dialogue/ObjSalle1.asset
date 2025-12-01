@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: ObjSalle1
   m_EditorClassIdentifier: 
   lines:
-  - text: 'Dialogue qui rappelle un flashback Pour l''histoire '
+  - text: Un bracelet?
+    audio: {fileID: 0}
+    duration: 3
+  - text: Il me parait familier...?
+    audio: {fileID: 0}
+    duration: 3
+  - text: "J'ai l'impression qu'il vient d'une connaissance \xE0 moi..."
+    audio: {fileID: 0}
+    duration: 3
+  - text: "Un jeune homme de mes ann\xE9es d'\xE9tudes..."
+    audio: {fileID: 0}
+    duration: 3
+  - text: "Qu'est ce qu'il \xE9tait pitoyable."
     audio: {fileID: 0}
     duration: 3

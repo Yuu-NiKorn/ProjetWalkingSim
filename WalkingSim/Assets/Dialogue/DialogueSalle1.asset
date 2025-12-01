@@ -24,11 +24,17 @@ MonoBehaviour:
   - text: 'Qu''est ce qu''est cet endroit ? '
     audio: {fileID: 0}
     duration: 5
-  - text: 'Je suis dans le vide ?
+  - text: 'Il y a le vide sous mes pieds?!
 
 '
     audio: {fileID: 0}
     duration: 5
-  - text: Il y aura un vrai dialogue interressant
+  - text: Qui suis-je?
+    audio: {fileID: 0}
+    duration: 5
+  - text: 'Dois-je continuer d''avancer? '
+    audio: {fileID: 0}
+    duration: 5
+  - text: Quels sont ces objets?
     audio: {fileID: 0}
     duration: 5
