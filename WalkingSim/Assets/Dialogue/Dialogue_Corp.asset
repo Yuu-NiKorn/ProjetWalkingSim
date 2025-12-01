@@ -13,15 +13,22 @@ MonoBehaviour:
   m_Name: Dialogue_Corp
   m_EditorClassIdentifier: 
   lines:
-  - text: "Mais c'est moi \xE7a !!!"
+  - text: "Un draps avec des t\xE2ches ?"
     audio: {fileID: 0}
     duration: 3
-  - text: "C'\xE9tait toi"
+  - text: "Mais c\u2019est.. du sang !?"
     audio: {fileID: 0}
     duration: 3
-  - text: "Mais comment c'est arriv\xE9 ?"
+  - text: "C\u2019est.. Moi..? J-je.. suis mort? C\u2019est.. Cette espace.. Ces
+      salles.. L\u2019Entre-Deux ?.."
+    audio: {fileID: 0}
+    duration: 5
+  - text: "En effet... Et v\xF4tre jugement n'attend que vous"
     audio: {fileID: 0}
     duration: 3
-  - text: Tu vas vite le savoir
+  - text: "Mais qui \xEAtes vous \xE0 la fin ?"
     audio: {fileID: 0}
     duration: 3
+  - text: "Votre gardien... Laissez moi vous mener vers votre finalit\xE9"
+    audio: {fileID: 0}
+    duration: 5

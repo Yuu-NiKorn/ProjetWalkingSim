@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: Noir
   m_EditorClassIdentifier: 
   lines:
-  - text: 'Ange: Il fait tout noir ici '
+  - text: Mais on y voit que dalle ici
     audio: {fileID: 0}
     duration: 3
-  - text: "Ange: Je vais arranger \xE7a"
+  - text: "Je vais me cogner de\r\npartout c\u2019est pas possible"
+    audio: {fileID: 0}
+    duration: 5
+  - text: "Je vais arranger \xE7a"
     audio: {fileID: 0}
     duration: 3
-  - text: 'Ange: LUMIERE'
+  - text: LUMIERE
     audio: {fileID: 0}
     duration: 3

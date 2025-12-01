@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: Dialogue_Verre
   m_EditorClassIdentifier: 
   lines:
-  - text: "C'est bon j'ai enfin compris le pourquoi de ma pr\xE9sence en ces lieux"
+  - text: "Qu\u2019est-ce que\u2026\nune lame de verre ?"
     audio: {fileID: 0}
     duration: 3
-  - text: "Maintenant pars vers ta d\xE9stin\xE9"
+  - text: "Et ce sang\u2026 \nc\u2019est beaucoup trop pour un simple accident\u2026"
     audio: {fileID: 0}
-    duration: 3
+    duration: 5
+  - text: "Non\u2026 non, attends\u2026 \nC\u2019est quoi, l\xE0, sous le drap ?"
+    audio: {fileID: 0}
+    duration: 5

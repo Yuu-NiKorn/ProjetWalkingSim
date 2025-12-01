@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Dialogue_Sac
   m_EditorClassIdentifier: 
   lines:
-  - text: "Quelqu'un \xE0 oublier son sac de cours. Des\r\n bons \xE0 rien finalement
-      quoi. Pffeh-"
+  - text: "Mon sac\u2026? \nPourquoi il est\u2026 vid\xE9 comme \xE7a ?"
+    audio: {fileID: 0}
+    duration: 5
+  - text: "Tu commence a comprendre ce qui c'est pass\xE9"
     audio: {fileID: 0}
     duration: 3
