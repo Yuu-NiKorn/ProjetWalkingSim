@@ -139,7 +139,7 @@ MonoBehaviour:
   closedRot: {x: 0, y: 0, z: 0}
   openRot: {x: 0, y: 90, z: 0}
   openSpeed: 8
-  doorRend: {fileID: 0}
+  doorRend: {fileID: 2445686948810641374}
   targetColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   prompts:
   - Open Door
@@ -304,6 +304,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e54824a2dd8932f44903004871d86ec5, type: 3}
+--- !u!23 &2445686948810641374 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: e54824a2dd8932f44903004871d86ec5, type: 3}
+  m_PrefabInstance: {fileID: 3904980364166714202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3583738917539886257 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e54824a2dd8932f44903004871d86ec5, type: 3}
