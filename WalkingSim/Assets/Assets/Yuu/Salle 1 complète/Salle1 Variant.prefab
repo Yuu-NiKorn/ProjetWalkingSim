@@ -126,6 +126,7 @@ MonoBehaviour:
   onInteractUnity:
     m_PersistentCalls:
       m_Calls: []
+  exit: 0
 --- !u!114 &2202628069139165301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,11 +149,8 @@ MonoBehaviour:
   objectToReveal: {fileID: 0}
   fadeInOnReveal: 1
   fadeInDuration: 0.6
-  hideObject: 1
-  objectToHide: {fileID: 1356013884009173350}
-  fadeOutOnHide: 1
-  fadeOutDuration: 0.5
   disableAfterFadeOut: 1
+  hideTargets: []
   sfxSource: {fileID: 0}
   appearSfx: {fileID: 0}
   disappearSfx: {fileID: 0}
@@ -934,73 +932,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!1 &2800118094609099639
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5917853072883394989}
-  - component: {fileID: 4905904257860125704}
-  - component: {fileID: 6820056937533049246}
-  m_Layer: 0
-  m_Name: TeleportSpawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5917853072883394989
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800118094609099639}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.48, y: 5.93, z: 3.7806206}
-  m_LocalScale: {x: 5.155551, y: 5.155551, z: 5.155551}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3010491818570014410}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4905904257860125704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800118094609099639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4ca7336a572aae43a3cba5fd18062fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportDestination: {fileID: 0}
---- !u!65 &6820056937533049246
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2800118094609099639}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7232414918937397022
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +1988,68 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!1001 &358756018098685881
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3010491818570014410}
+    m_Modifications:
+    - target: {fileID: 2460806120166386894, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+      propertyPath: m_Name
+      value: TeleportSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258594692404178452, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258594692404178452, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258594692404178452, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.7806206
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258594692404178452, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258594692404178452, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258594692404178452, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258594692404178452, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258594692404178452, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258594692404178452, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258594692404178452, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+--- !u!4 &5917853072883394989 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6258594692404178452, guid: 1ef97e299cde0a94e8275f509eeaf962, type: 3}
+  m_PrefabInstance: {fileID: 358756018098685881}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7767749441797585795
 PrefabInstance:
   m_ObjectHideFlags: 0
