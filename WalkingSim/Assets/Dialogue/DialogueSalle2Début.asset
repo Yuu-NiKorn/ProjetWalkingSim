@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ace8cb2c0b5f5f4eae8d3c88b669c6a, type: 3}
-  m_Name: "DialogueSalle3D\xE9but"
+  m_Name: "DialogueSalle2D\xE9but"
   m_EditorClassIdentifier: 
   lines:
   - text: "Je suis d\xE9j\xE0 venu ici non ? Attend... J'\xE9tais avec\r\n les gens
       de la classe ici ? C'\xE9tait l\xE0 o\xF9 on a fait\r\n notre urbex !"
     audio: {fileID: 0}
-    duration: 2
+    duration: 5

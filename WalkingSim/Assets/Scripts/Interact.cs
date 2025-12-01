@@ -4,12 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /* 
-
     First Person Interaction Toolkit by Steven Harmon stevenharmongames.com
-    Licensed under the MPL 2.0. https://www.mozilla.org/en-US/MPL/2.0/FAQ/
-    Adapté pour gestion directe de la touche E.
-
- */
+    Adapté pour gestion directe de la touche E + blocage pendant dialogues.
+*/
 
 public class Interact : MonoBehaviour
 {
@@ -42,6 +39,19 @@ public class Interact : MonoBehaviour
 
     void Update()
     {
+        // ✅ Si un dialogue est en cours : on bloque TOUTE interaction
+        if (DialogueUI.AnyDialoguePlaying)
+        {
+            hover = false;
+            dispText.text = "";
+            CrosshairUI.SetActive(false);
+            storedIntObj = null;
+            currentObj = null;
+            alreadyHovered = false;
+            alreadyHovered2 = true; // pour éviter de rejouer le popup
+            return;
+        }
+
         fwd = transform.TransformDirection(Vector3.forward);
         RaycastHit hit;
 
@@ -69,13 +79,13 @@ public class Interact : MonoBehaviour
 
                     hover = true;
 
-                    // ✅ Ici on gère la touche E directement
+                    // touche E pour interagir
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         hit.transform.SendMessage("Interacting", SendMessageOptions.DontRequireReceiver);
                     }
 
-                    // Optionnel : touche clic droit pour “Squint”
+                    // clic droit pour "Squint" (optionnel)
                     if (Input.GetMouseButtonDown(1))
                     {
                         hit.transform.SendMessage("Looking", SendMessageOptions.DontRequireReceiver);
@@ -83,19 +93,16 @@ public class Interact : MonoBehaviour
                 }
                 else
                 {
-                    // Trop loin
                     ResetHoverState();
                 }
             }
             else
             {
-                // Pas un objet interactable
                 ResetHoverState();
             }
         }
         else
         {
-            // Rien regardé
             hover = false;
             dispText.text = "";
             CrosshairUI.SetActive(false);
@@ -122,4 +129,5 @@ public class Interact : MonoBehaviour
         }
     }
 }
+
 

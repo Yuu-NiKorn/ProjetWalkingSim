@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: Dialogue_Corp
   m_EditorClassIdentifier: 
   lines:
-  - text: "Un draps avec des t\xE2ches ?"
-    audio: {fileID: 0}
-    duration: 3
-  - text: "Mais c\u2019est.. du sang !?"
+  - text: "Un draps avec des t\xE2ches de sang ?"
     audio: {fileID: 0}
     duration: 3
   - text: "C\u2019est.. Moi..? J-je.. suis mort? C\u2019est.. Cette espace.. Ces

@@ -13,11 +13,17 @@ public class DialogueUI : MonoBehaviour
     public int CurrentLineIndex { get; private set; } = -1;
     public bool IsPlaying { get; private set; } = false;
 
+    // ✅ Flag global : n'importe quel script peut vérifier ça
+    public static bool AnyDialoguePlaying { get; private set; } = false;
+
     public IEnumerator PlayDialogue(DialogueData dialogue)
     {
         IsPlaying = true;
+        AnyDialoguePlaying = true;   // ✅ on démarre un dialogue
+
         CurrentLineIndex = -1;
-        canvasGroup.alpha = 1;
+        if (canvasGroup != null)
+            canvasGroup.alpha = 1;
 
         for (int i = 0; i < dialogue.lines.Length; i++)
         {
@@ -44,6 +50,7 @@ public class DialogueUI : MonoBehaviour
         if (canvasGroup != null) canvasGroup.alpha = 0;
 
         IsPlaying = false;
+        AnyDialoguePlaying = false;  // ✅ plus de dialogue en cours
         CurrentLineIndex = -1;
     }
 }
