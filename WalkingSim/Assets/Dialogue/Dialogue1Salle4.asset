@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Dialogue1Salle4
   m_EditorClassIdentifier: 
   lines:
-  - text: Alors... je suis mort ?
+  - text: "Qu\u2019est-ce que..."
     audio: {fileID: 0}
     duration: 2
-  - text: "Ange : Voici donc l'appre\xE7u de ta mort ?"
+  - text: "Jean Jacque\u202F: Pendant sept ans j\u2019ai endur\xE9 ceci. Le rejet,
+      le m\xE9pris, la condescendance\u2026 "
     audio: {fileID: 0}
-    duration: 3
+    duration: 5

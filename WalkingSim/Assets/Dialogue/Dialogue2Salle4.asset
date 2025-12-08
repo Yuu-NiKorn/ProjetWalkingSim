@@ -13,6 +13,14 @@ MonoBehaviour:
   m_Name: Dialogue2Salle4
   m_EditorClassIdentifier: 
   lines:
-  - text: "C'est moi qui ai... mais il m'as tu\xE9 !"
+  - text: "C\u2019est sa voix ?!... J-je-"
     audio: {fileID: 0}
-    duration: 3
+    duration: 2
+  - text: "Jean Jacque\u202F: Silence\u202F! On entend que toi, tes faits, ta gloire,
+      le monde te tourne autour mais tu n\u2019en as que faire d\u2019eux, de nous\u202F! "
+    audio: {fileID: 0}
+    duration: 6
+  - text: "Jean Jacque\u202F: A un point ou pour se d\xE9marquer il faut en devenir
+      ton larbin et subir ta cruaut\xE9\u2026"
+    audio: {fileID: 0}
+    duration: 4

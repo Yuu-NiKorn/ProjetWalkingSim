@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Dialogue3Salle4
   m_EditorClassIdentifier: 
   lines:
-  - text: 'Ange : Tu n''es sans doute pas au bout de tes surprises...'
+  - text: "Jean Jacque\u202F: Par ta faute j\u2019en ai perdu la foi et la raison,
+      et pour cela je t\u2019ai \xF4t\xE9 la vie\u2026."
     audio: {fileID: 0}
     duration: 4
+  - text: "Jean Jacque\u202F: Et aujourd\u2019hui, je serais seul juge de ton \xE2me"
+    audio: {fileID: 0}
+    duration: 3
