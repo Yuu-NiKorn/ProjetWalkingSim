@@ -28,6 +28,6 @@ MonoBehaviour:
     audio: {fileID: 0}
     duration: 3
   - text: "Si j\u2019ai v\xE9cu et vu tout \xE7a.. Cette note.. Cet endroit..\r\n
-      C\u2019est un r\xEAve nan ?.."
+      C\u2019est un r\xEAve nan ?"
     audio: {fileID: 0}
     duration: 5

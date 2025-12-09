@@ -8,7 +8,7 @@ namespace Yuu
         public void OnStartClick()
         {
             Debug.Log("Bouton Start Appuyé");
-            SceneManager.LoadScene("SceneDemoScript");
+            SceneManager.LoadScene("BuildScene");
         }
 
         public void OnExitClick()

@@ -40,9 +40,13 @@ public class KeypadInteractable : MonoBehaviour
     public AudioClip successSfx;
     public AudioClip failSfx;
 
-    [Header("Bloquer contrôles pendant l'UI")]
+    [Header("Bloquer contrôles pendant l'UI (player)")]
     public GameObject controlsRoot;
     public List<string> scriptTypeNamesToDisable = new List<string>();
+
+    [Header("Bloquer aussi ces scripts pendant l'UI (ex: menu pause)")]
+    [Tooltip("Dépose ici ton script de menu pause ou tout autre script à désactiver quand le digicode est ouvert.")]
+    public MonoBehaviour[] extraScriptsToDisable;
 
     private Material[] mats;
     private bool uiOpen = false;
@@ -51,6 +55,9 @@ public class KeypadInteractable : MonoBehaviour
 
     // Référence à ton HUD/raycast Interact
     private Interact inter;
+
+    // Flag global utilisable par d'autres scripts si besoin
+    public static bool AnyKeypadOpen { get; private set; } = false;
 
     void Awake()
     {
@@ -83,6 +90,12 @@ public class KeypadInteractable : MonoBehaviour
         {
             fakeCursor.position = Input.mousePosition;
         }
+
+        // Si on appuie sur Echap pendant le digicode : ferme juste le digicode
+        if (uiOpen && Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseUI();
+        }
     }
 
     // ========== INTERACTION SYSTEM ==========
@@ -110,6 +123,7 @@ public class KeypadInteractable : MonoBehaviour
     {
         if (uiOpen) return;
         uiOpen = true;
+        AnyKeypadOpen = true;
 
         if (inter != null) inter.message = "";
 
@@ -132,6 +146,7 @@ public class KeypadInteractable : MonoBehaviour
     {
         if (!uiOpen) return;
         uiOpen = false;
+        AnyKeypadOpen = false;
 
         if (keypadCanvasRoot != null) keypadCanvasRoot.SetActive(false);
 
@@ -146,19 +161,34 @@ public class KeypadInteractable : MonoBehaviour
     void DisableControlsByName()
     {
         disabledDuringUI.Clear();
-        if (controlsRoot == null || scriptTypeNamesToDisable == null || scriptTypeNamesToDisable.Count == 0)
-            return;
 
-        var all = controlsRoot.GetComponentsInChildren<MonoBehaviour>(true);
-
-        foreach (var mb in all)
+        // 1) Scripts du player (controlsRoot) trouvés par nom
+        if (controlsRoot != null && scriptTypeNamesToDisable != null && scriptTypeNamesToDisable.Count > 0)
         {
-            if (mb == null) continue;
-            string typeName = mb.GetType().Name;
+            var all = controlsRoot.GetComponentsInChildren<MonoBehaviour>(true);
 
-            for (int i = 0; i < scriptTypeNamesToDisable.Count; i++)
+            foreach (var mb in all)
             {
-                if (typeName == scriptTypeNamesToDisable[i] && mb.enabled)
+                if (mb == null) continue;
+                string typeName = mb.GetType().Name;
+
+                for (int i = 0; i < scriptTypeNamesToDisable.Count; i++)
+                {
+                    if (typeName == scriptTypeNamesToDisable[i] && mb.enabled)
+                    {
+                        mb.enabled = false;
+                        disabledDuringUI.Add(mb);
+                    }
+                }
+            }
+        }
+
+        // 2) Scripts explicitement référencés (ex: script de menu pause)
+        if (extraScriptsToDisable != null)
+        {
+            foreach (var mb in extraScriptsToDisable)
+            {
+                if (mb != null && mb.enabled)
                 {
                     mb.enabled = false;
                     disabledDuringUI.Add(mb);
@@ -194,10 +224,8 @@ public class KeypadInteractable : MonoBehaviour
         if (targetToUnlock != null && makeTargetInteractableByTag)
             targetToUnlock.tag = interactableTagName;
 
-        // Remet la couleur après un temps indépendant
         StartCoroutine(ResetColorAfter(colorFeedbackTime));
 
-        // Ferme l'UI plus vite (ou instant si uiCloseDelay=0)
         yield return new WaitForSeconds(uiCloseDelay);
         CloseUI();
     }
@@ -232,6 +260,7 @@ public class KeypadInteractable : MonoBehaviour
         }
     }
 }
+
 
 
 

@@ -12,9 +12,10 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
     [Header("APPARITION")]
     public bool spawnObject = false;
     public bool usePrefab = false;
+    public bool spawnAtInteractTime = true;   // ⬅️ NOUVEAU : apparition au moment de l'interaction
     public GameObject prefabToSpawn;       
     public Transform spawnPoint;           
-    public GameObject objectToReveal;      
+    public GameObject objectToReveal;      // ex : parent "Sang" avec toutes les taches
     public bool fadeInOnReveal = true;
     public float fadeInDuration = 0.6f;
 
@@ -45,7 +46,7 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
     public AudioClip disappearSfx;
 
     bool hasTriggered = false;
-    
+
     void Interacting()
     {
         if (triggerOnce && hasTriggered) return;
@@ -63,7 +64,13 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
             }
         }
 
-        // 2) Lancer la séquence dialogue + apparition + disparitions "après dialogue"
+        // 2) Apparition dès l'interaction si demandé
+        if (spawnObject && spawnAtInteractTime)
+        {
+            StartCoroutine(SpawnOrRevealObject());
+        }
+
+        // 3) Lancer la séquence dialogue + disparitions "après dialogue"
         StartCoroutine(RunSequence());
     }
 
@@ -73,37 +80,10 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
         if (dialogueUI != null && dialogue != null)
             yield return dialogueUI.PlayDialogue(dialogue);
 
-        //  Apparition
-        GameObject revealed = null;
-        if (spawnObject)
+        //  Apparition APRÈS le dialogue (si on n'a pas déjà spawn avant)
+        if (spawnObject && !spawnAtInteractTime)
         {
-            if (usePrefab && prefabToSpawn != null)
-            {
-                Vector3 pos = spawnPoint ? spawnPoint.position : transform.position;
-                Quaternion rot = spawnPoint ? spawnPoint.rotation : Quaternion.identity;
-                revealed = Instantiate(prefabToSpawn, pos, rot);
-            }
-            else if (objectToReveal != null)
-            {
-                revealed = objectToReveal;
-                revealed.SetActive(true);
-            }
-
-            if (revealed != null)
-            {
-                if (fadeInOnReveal)
-                    yield return StartCoroutine(FadeObject(
-                        revealed,
-                        fromAlpha: 0f,
-                        toAlpha: 1f,
-                        duration: fadeInDuration,
-                        setTransparentBefore: true,
-                        restoreOpaqueAfter: true
-                    ));
-
-                if (sfxSource && appearSfx)
-                    sfxSource.PlayOneShot(appearSfx);
-            }
+            yield return SpawnOrRevealObject();
         }
 
         //  Disparition APRÈS dialogue (ceux qui ne sont PAS hideOnInteract)
@@ -116,6 +96,42 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
 
                 yield return StartCoroutine(HideOneTarget(ht));
             }
+        }
+    }
+
+    // --------- APPARITION / RÉVÉLATION ----------
+    IEnumerator SpawnOrRevealObject()
+    {
+        GameObject revealed = null;
+
+        if (usePrefab && prefabToSpawn != null)
+        {
+            Vector3 pos = spawnPoint ? spawnPoint.position : transform.position;
+            Quaternion rot = spawnPoint ? spawnPoint.rotation : Quaternion.identity;
+            revealed = Instantiate(prefabToSpawn, pos, rot);
+        }
+        else if (objectToReveal != null)
+        {
+            revealed = objectToReveal;
+            revealed.SetActive(true);
+        }
+
+        if (revealed != null)
+        {
+            if (fadeInOnReveal)
+            {
+                yield return StartCoroutine(FadeObject(
+                    revealed,
+                    fromAlpha: 0f,
+                    toAlpha: 1f,
+                    duration: fadeInDuration,
+                    setTransparentBefore: true,
+                    restoreOpaqueAfter: true
+                ));
+            }
+
+            if (sfxSource && appearSfx)
+                sfxSource.PlayOneShot(appearSfx);
         }
     }
 
@@ -146,7 +162,6 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
             // on ne désactive pas le GameObject complet sinon toutes les coroutines s'arrêtent.
             if (go == this.gameObject)
             {
-                // On coupe juste les rendus + colliders + interaction
                 foreach (var r in go.GetComponentsInChildren<Renderer>(true))
                     r.enabled = false;
 
@@ -157,7 +172,6 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
             }
             else
             {
-                // Autres objets : on peut tout désactiver sans risque
                 go.SetActive(false);
             }
         }
@@ -166,7 +180,7 @@ public class InteractableDialogueSpawnFade : MonoBehaviour
             sfxSource.PlayOneShot(disappearSfx);
     }
 
-    // --------- FONDU UTILITAIRE (Standard + URP) ----------
+    // --------- FONDU UTILITAIRE ----------
     IEnumerator FadeObject(GameObject go, float fromAlpha, float toAlpha, float duration, bool setTransparentBefore, bool restoreOpaqueAfter)
     {
         if (go == null) yield break;

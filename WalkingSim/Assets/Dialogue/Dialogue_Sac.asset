@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Dialogue_Sac
   m_EditorClassIdentifier: 
   lines:
-  - text: "Mon sac\u2026? \nPourquoi il est\u2026 vid\xE9 comme \xE7a ?"
+  - text: "Malcom\u202F: Mon sac\u2026 ?  \nPourquoi est-il dans cet \xE9tat ? "
     audio: {fileID: 0}
     duration: 5
-  - text: "Tu commence a comprendre ce qui c'est pass\xE9"
+  - text: "Ange : Tu commence a comprendre ce qui c'est pass\xE9"
     audio: {fileID: 0}
     duration: 3

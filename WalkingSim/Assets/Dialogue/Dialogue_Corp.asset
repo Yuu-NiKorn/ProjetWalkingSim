@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Dialogue_Corp
   m_EditorClassIdentifier: 
   lines:
-  - text: "Un draps avec des t\xE2ches de sang ?"
+  - text: "Malcom\u202F: Un drap avec des taches de sang ? "
     audio: {fileID: 0}
     duration: 3
-  - text: "C\u2019est.. Moi..? J-je.. suis mort? C\u2019est.. Cette espace.. Ces
-      salles.. L\u2019Entre-Deux ?.."
+  - text: "Malcom\u202F: C\u2019est... Moi... ? J-je... suis mort ? C\u2019est...
+      Cette espace... Ces salles... L\u2019Entre-Deux ? "
     audio: {fileID: 0}
     duration: 5
-  - text: "En effet... Et v\xF4tre jugement n'attend que vous"
+  - text: "Ange\u202F: En effet... Et v\xF4tre jugement n'attend que vous "
     audio: {fileID: 0}
     duration: 3
-  - text: "Mais qui \xEAtes vous \xE0 la fin ?"
+  - text: "Malcom\u202F: Mais qui \xEAtes-vous ? "
     audio: {fileID: 0}
     duration: 3
-  - text: "Votre gardien... Laissez moi vous mener vers votre finalit\xE9"
+  - text: "Ange\u202F: Votre gardien... Laissez-moi vous mener vers votre finalit\xE9 "
     audio: {fileID: 0}
     duration: 5
