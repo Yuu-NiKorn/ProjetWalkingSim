@@ -13,18 +13,12 @@ MonoBehaviour:
   m_Name: ObjSalle1
   m_EditorClassIdentifier: 
   lines:
-  - text: Un bracelet?
+  - text: 'Malcom: Mais c''est le collier de ce minable de Jean-Jacques?'
     audio: {fileID: 0}
     duration: 3
-  - text: Il me parait familier...?
+  - text: Malcom:Pourquoi lui ici?
     audio: {fileID: 0}
     duration: 3
-  - text: "J'ai l'impression qu'il vient d'une connaissance \xE0 moi..."
-    audio: {fileID: 0}
-    duration: 3
-  - text: "Un jeune homme de mes ann\xE9es d'\xE9tudes..."
-    audio: {fileID: 0}
-    duration: 3
-  - text: "Qu'est ce qu'il \xE9tait pitoyable."
+  - text: "Malcom:Un reve c'est cens\xE9 etre accueillant non?"
     audio: {fileID: 0}
     duration: 3

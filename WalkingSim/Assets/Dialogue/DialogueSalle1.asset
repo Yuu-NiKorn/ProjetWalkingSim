@@ -13,28 +13,15 @@ MonoBehaviour:
   m_Name: DialogueSalle1
   m_EditorClassIdentifier: 
   lines:
-  - text: '...?
-
-'
+  - text: 'Malcom: Ou suis-je? '
     audio: {fileID: 0}
-    duration: 5
-  - text: Ou suis-je?
+    duration: 2
+  - text: 'Malcom: Quel est cet endroit?'
     audio: {fileID: 0}
-    duration: 5
-  - text: 'Qu''est ce qu''est cet endroit ? '
+    duration: 2
+  - text: 'Malcom: Est-ce un reve ? '
     audio: {fileID: 0}
-    duration: 5
-  - text: 'Il y a le vide sous mes pieds?!
-
-'
+    duration: 2
+  - text: Malcom:Mais c'est le vide?
     audio: {fileID: 0}
-    duration: 5
-  - text: Qui suis-je?
-    audio: {fileID: 0}
-    duration: 5
-  - text: 'Dois-je continuer d''avancer? '
-    audio: {fileID: 0}
-    duration: 5
-  - text: Quels sont ces objets?
-    audio: {fileID: 0}
-    duration: 5
+    duration: 2

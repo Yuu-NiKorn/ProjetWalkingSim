@@ -13,17 +13,9 @@ MonoBehaviour:
   m_Name: DailogueSalle2_obj2
   m_EditorClassIdentifier: 
   lines:
-  - text: Un collier?
+  - text: 'Malcom: Papa et maman...'
     audio: {fileID: 0}
     duration: 2
-  - text: "Un m\xE9daillon imag\xE9? On dirait mes parents..."
+  - text: 'Malcom: Mais quel est cet endroit?'
     audio: {fileID: 0}
-    duration: 4
-  - text: "Ils m'ont apport\xE9s tellement de r\xE9conforts"
-    audio: {fileID: 0}
-    duration: 4
-  - text: 'Je veux les retrouver ! je dois continuer
-
-'
-    audio: {fileID: 0}
-    duration: 4
+    duration: 3

@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Dialogue_Caillou
   m_EditorClassIdentifier: 
   lines:
-  - text: "Bon, en vrai, il m\xE9ritait pas, il est p'tetre d\xE9bile\r\nouais, mais
-      bon."
+  - text: "Malcom: Ce doudou, c'est \xE0 moi? "
     audio: {fileID: 0}
-    duration: 3
-  - text: ' Et maintenant ? Je fais quoi ?'
+    duration: 2
+  - text: 'Ange: Continue d''avancer...'
     audio: {fileID: 0}
-    duration: 3
-  - text: ' Ange : Continue ...'
+    duration: 2
+  - text: 'Malcom: Qui me parles?'
     audio: {fileID: 0}
-    duration: 3
+    duration: 2
