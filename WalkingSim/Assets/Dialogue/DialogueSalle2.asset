@@ -10,19 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ace8cb2c0b5f5f4eae8d3c88b669c6a, type: 3}
-  m_Name: Dialogue_Caillou
+  m_Name: DialogueSalle2
   m_EditorClassIdentifier: 
   lines:
-  - text: 'Malcom : Je me rappelle !  '
+  - text: "Malcom : Je suis d\xE9j\xE0 venu ici non ? "
     audio: {fileID: 0}
     duration: 2
-  - text: "Malcom : Je l\u2019ai jet\xE9 sur Jean Jacque "
-    audio: {fileID: 0}
-    duration: 2
-  - text: 'Ange : Es ce que tu regrettes ? '
-    audio: {fileID: 0}
-    duration: 2
-  - text: "Malcom : Bon, en vrai, il ne m\xE9ritait pas, il est peut-\xEAtre d\xE9bile
-      ouais, mais bon. "
+  - text: "Malcom :  Attend... J'\xE9tais avec les gens de la classe ici ? C'\xE9tait
+      l\xE0 o\xF9 on a fait notre urbex ! "
     audio: {fileID: 0}
     duration: 3

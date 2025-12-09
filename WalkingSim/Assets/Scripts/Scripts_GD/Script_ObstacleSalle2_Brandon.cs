@@ -1,8 +1,6 @@
 using UnityEngine;
-
 public class Script_ObstacleSalle2_Brandon : MonoBehaviour
 {
-    
     public int requiredPresses = 2;
     private int currentPresses = 0;
 
@@ -16,7 +14,6 @@ public class Script_ObstacleSalle2_Brandon : MonoBehaviour
             OpenDoor();
         }
     }
-
     private void OpenDoor()
     {
         Debug.Log("Porte ouverte !");

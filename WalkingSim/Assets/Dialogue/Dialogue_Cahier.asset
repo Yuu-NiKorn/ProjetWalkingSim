@@ -15,19 +15,22 @@ MonoBehaviour:
   lines:
   - text: "Mais \xE0 qui peut bien appartenir ce cahier ?"
     audio: {fileID: 0}
-    duration: 3
-  - text: "\"Et pourtant Malcom et Jean Jacque ont disparu\r\n dans le b\xE2timent,
-      peut-\xEAtre qu\u2019ils ont trouv\xE9\r\n quelque chose ? Mais pourquoi ont-ils
-      ferm\xE9 la\r\n porte ..? \""
-    audio: {fileID: 0}
-    duration: 5
-  - text: '"Trop bizzard"'
+    duration: 2
+  - text: "\u202F\" Et pourtant Malcom et Jean Jacque ont disparu dans le b\xE2timent,
+      peut-\xEAtre qu\u2019ils ont trouv\xE9 quelque chose ? Mais pourquoi ont-ils
+      ferm\xE9 la porte ? \" "
     audio: {fileID: 0}
     duration: 3
+  - text: '"Trop bizarre" '
+    audio: {fileID: 0}
+    duration: 2
+  - text: '"Trop bizarre" '
+    audio: {fileID: 0}
+    duration: 2
   - text: "Mais \xE7a parle de moi !!!"
     audio: {fileID: 0}
-    duration: 3
-  - text: "Si j\u2019ai v\xE9cu et vu tout \xE7a.. Cette note.. Cet endroit..\r\n
-      C\u2019est un r\xEAve nan ?"
+    duration: 2
+  - text: "Si j\u2019ai v\xE9cu et vu tout \xE7a\u2026 Cette note\u2026  Cet endroit\u2026
+      C\u2019est un r\xEAve nan ? "
     audio: {fileID: 0}
-    duration: 5
+    duration: 2

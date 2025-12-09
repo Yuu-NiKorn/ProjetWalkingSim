@@ -10,19 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ace8cb2c0b5f5f4eae8d3c88b669c6a, type: 3}
-  m_Name: Dialogue_Caillou
+  m_Name: Dialogue_SacSalle2
   m_EditorClassIdentifier: 
   lines:
-  - text: 'Malcom : Je me rappelle !  '
+  - text: "Malcom : Quelqu'un \xE0 oublier son sac de cours. Des\r\n bons \xE0 rien
+      finalement quoi. Pffeh-"
     audio: {fileID: 0}
-    duration: 2
-  - text: "Malcom : Je l\u2019ai jet\xE9 sur Jean Jacque "
-    audio: {fileID: 0}
-    duration: 2
-  - text: 'Ange : Es ce que tu regrettes ? '
-    audio: {fileID: 0}
-    duration: 2
-  - text: "Malcom : Bon, en vrai, il ne m\xE9ritait pas, il est peut-\xEAtre d\xE9bile
-      ouais, mais bon. "
+    duration: 5
+  - text: "Ange : Tu commence a comprendre ce qui c'est pass\xE9"
     audio: {fileID: 0}
     duration: 3

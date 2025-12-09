@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ace8cb2c0b5f5f4eae8d3c88b669c6a, type: 3}
-  m_Name: Dialogue_Sac
+  m_Name: DialogueSalle4Chemin
   m_EditorClassIdentifier: 
   lines:
-  - text: "Malcom\u202F: Mon sac\u2026 ?  \nPourquoi est-il dans cet \xE9tat ? "
+  - text: 'Malcom : Et maintenant ? Je fais quoi ? '
     audio: {fileID: 0}
-    duration: 5
-  - text: "Ange : Tu commence a comprendre ce qui c'est pass\xE9"
+    duration: 2
+  - text: "Ange\u202F: Continue ton chemin\u2026 "
     audio: {fileID: 0}
-    duration: 3
+    duration: 2
