@@ -272,13 +272,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: 9fb282edd1101e54da013a5f98e6b869, type: 2}
-  dialogueUI: {fileID: 0}
+  dialogueUI: {fileID: 5627013735663140424, guid: 728d38b22d1914e4bac6ae404a6f86e7, type: 3}
   triggerOnce: 1
-  spawnObject: 0
-  usePrefab: 0
+  spawnObject: 1
+  usePrefab: 1
   prefabToSpawn: {fileID: 5917817440679283003, guid: fc722c7eb0d3b274b9c629d7fd216153, type: 3}
   spawnPoint: {fileID: 0}
-  objectToReveal: {fileID: 0}
+  objectToReveal: {fileID: 5917817440679283003, guid: fc722c7eb0d3b274b9c629d7fd216153, type: 3}
   fadeInOnReveal: 0
   fadeInDuration: 0.6
   disableAfterFadeOut: 1
