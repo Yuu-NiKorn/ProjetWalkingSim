@@ -48,7 +48,6 @@ public class EndInteractable : MonoBehaviour
         // lance le canva du menu de choix et bloque le joueur
         canvasChoice.SetActive(true);
         Time.timeScale = 0f;
-        PauseMenu.isPaused = true;
         DisableControlsByName();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
