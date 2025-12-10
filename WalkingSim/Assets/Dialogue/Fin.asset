@@ -10,15 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ace8cb2c0b5f5f4eae8d3c88b669c6a, type: 3}
-  m_Name: DailogueSalle2_obj3
+  m_Name: Fin
   m_EditorClassIdentifier: 
   lines:
-  - text: "Malcom : Ce doudou, c\u2019est \xE0 moi ? "
+  - text: "Merci d'avoir jouer mais la r\xE9demption se fait seul."
     audio: {fileID: 0}
-    duration: 4
-  - text: "Ange : Continue d\u2019avancer.... "
-    audio: {fileID: 0}
-    duration: 4
-  - text: 'Malcom : Qui es ce ? Qui me parle ? '
-    audio: {fileID: 0}
-    duration: 4
+    duration: 5
